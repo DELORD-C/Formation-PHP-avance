@@ -2,27 +2,19 @@
 
 include('php/bdd.php');
 
-if (
-    isset($_POST['nom']) &&
-    isset($_POST['prenom']) &&
-    isset($_POST['codePostal']) &&
-    isset($_POST['localite']) &&
-    isset($_POST['rue']) &&
-    isset($_POST['numero']) &&
-    isset($_POST['telephone']) &&
-    isset($_POST['email'])
-) {
-    $query = $conn->prepare("INSERT INTO clients (nom, prenom, codePostal, localite, rue, numero, telephone, email) VALUES (:nom, :prenom, :codePostal, :localite, :rue, :numero, :telephone, :email)");
-    $query->bindParam(':nom', $_POST['nom']);
-    $query->bindParam(':prenom', $_POST['prenom']);
-    $query->bindParam(':codePostal', $_POST['codePostal']);
-    $query->bindParam(':localite', $_POST['localite']);
-    $query->bindParam(':rue', $_POST['rue']);
-    $query->bindParam(':numero', $_POST['numero']);
-    $query->bindParam(':telephone', $_POST['telephone']);
-    $query->bindParam(':email', $_POST['email']);
-    $query->execute();
-    echo "<div class='alert alert-success'>Client ajouté avec succès</div>";
+if (checkForm(['nom', 'prenom', 'codePostal', 'localite', 'rue', 'numero', 'telephone', 'email'])) {
+    if (insert($conn, 'clients', [
+        'nom' => $_POST['nom'],
+        'prenom' => $_POST['prenom'],
+        'codePostal' => $_POST['codePostal'],
+        'localite' => $_POST['localite'],
+        'rue' => $_POST['rue'],
+        'numero' => $_POST['numero'],
+        'telephone' => $_POST['telephone'],
+        'email' => $_POST['email']
+    ])) {
+        echo "<div class='alert alert-success'>Client ajouté avec succès</div>";
+    }
 }
 
 ?>
