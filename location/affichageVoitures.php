@@ -29,7 +29,7 @@ foreach ($voitures as $voiture) {
             <td><?=$voiture['marque']?></td>
             <td><?=$voiture['modele']?></td>
             <td><?=$voiture['cylindree']?></td>
-            <td><?=$voiture['dateachat']?></td>
+            <td><?=$voiture['dateAchat']?></td>
         </tr>
     <?php
 }
