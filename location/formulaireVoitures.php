@@ -2,21 +2,16 @@
 
 include('php/bdd.php');
 
-if (
-    isset($_POST['immatriculation']) &&
-    isset($_POST['marque']) &&
-    isset($_POST['modele']) &&
-    isset($_POST['cylindree']) &&
-    isset($_POST['dateAchat'])
-) {
-    $query = $conn->prepare("INSERT INTO voitures (immatriculation, marque, modele, cylindree, dateAchat) VALUES (:immatriculation, :marque, :modele, :cylindree, :dateAchat)");
-    $query->bindParam(':immatriculation', $_POST['immatriculation']);
-    $query->bindParam(':marque', $_POST['marque']);
-    $query->bindParam(':modele', $_POST['modele']);
-    $query->bindParam(':cylindree', $_POST['cylindree']);
-    $query->bindParam(':dateAchat', $_POST['dateAchat']);
-    $query->execute();
-    echo "<div class='alert alert-success'>Voiture ajoutée avec succès</div>";
+if (checkform(['immatriculation', 'marque', 'modele', 'cylindree', 'dateAchat'])) {
+    if (insert($conn, 'voitures', [
+        'immatriculation', $_POST['immatriculation'],
+        'marque', $_POST['marque'],
+        'modele', $_POST['modele'],
+        'cylindree', $_POST['cylindree'],
+        'dateAchat', $_POST['dateAchat']
+    ])) {
+        echo "<div class='alert alert-success'>Voiture ajoutée avec succès</div>";
+    }
 }
 
 ?>
