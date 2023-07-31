@@ -15,13 +15,4 @@ if (checkform(['immatriculation', 'marque', 'modele', 'cylindree', 'dateAchat'])
     }
 }
 
-?>
-
-<form method="POST">
-    <input type="text" name="immatriculation" placeholder="Immatriculation" require>
-    <input type="text" name="marque" placeholder="Marque" require>
-    <input type="text" name="modele" placeholder="Modele" require>
-    <input type="number" name="cylindree" placeholder="Cylindrée" require>
-    <input type="date" name="dateAchat" require>
-    <input type="submit" value="Ajouter">
-</form>
+include('templates/formulaireVoitures.html');

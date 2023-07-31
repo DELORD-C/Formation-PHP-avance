@@ -18,16 +18,4 @@ if (checkForm(['nom', 'prenom', 'codePostal', 'localite', 'rue', 'numero', 'tele
     }
 }
 
-?>
-
-<form method="POST">
-    <input type="text" name="nom" placeholder="Nom" require>
-    <input type="text" name="prenom" placeholder="Prénom" require>
-    <input type="text" name="codePostal" placeholder="Code Postal" require>
-    <input type="text" name="localite" placeholder="Ville" require>
-    <input type="text" name="rue" placeholder="Rue" require>
-    <input type="text" name="numero" placeholder="Numéro" require>
-    <input type="text" name="telephone" placeholder="Téléphone" require>
-    <input type="email" name="email" placeholder="Email" require>
-    <input type="submit" value="Ajouter">
-</form>
+include('templates/formulaireClients.html');
