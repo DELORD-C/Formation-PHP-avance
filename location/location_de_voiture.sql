@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `telephone` varchar(40) NOT NULL,
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `locations` (
   `dateRentree` datetime NOT NULL,
   `assurance` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -74,14 +74,11 @@ CREATE TABLE IF NOT EXISTS `voitures` (
   `cylindree` smallint NOT NULL,
   `dateachat` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Déchargement des données de la table `voitures`
 --
-
-INSERT INTO `voitures` (`id`, `immatriculation`, `marque`, `modele`, `cylindree`, `dateachat`) VALUES
-(1, '45-FGH-XP', 'Renault', 'Twingo', 50, '2023-07-31');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
