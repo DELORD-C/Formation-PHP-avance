@@ -1,6 +1,6 @@
 <?php
 
-$conn = new PDO("mysql:dbname=location_de_voiture;host=localhost", "root", "");
+include('php/bdd.php');
 
 if (
     isset($_POST['immatriculation']) &&
@@ -26,6 +26,6 @@ if (
     <input type="text" name="marque" placeholder="Marque" require>
     <input type="text" name="modele" placeholder="Modele" require>
     <input type="number" name="cylindree" placeholder="Cylindrée" require>
-    <input type="date" name="dateAchat" placeholder="Date d'achat" require>
+    <input type="date" name="dateAchat" require>
     <input type="submit" value="Ajouter">
 </form>
