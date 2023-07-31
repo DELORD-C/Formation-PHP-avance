@@ -1,6 +1,7 @@
 <?php
 
 include('php/bdd.php');
+include('php/functions.php');
 
 if (checkForm(['nom', 'prenom', 'codePostal', 'localite', 'rue', 'numero', 'telephone', 'email'])) {
     if (insert($conn, 'clients', [
