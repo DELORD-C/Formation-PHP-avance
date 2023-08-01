@@ -8,11 +8,23 @@ include('templates/header.php');
 if (Form::checkFilm() && $film = $db->getFilm($_GET['film'])) {
 
     if (Form::checkData(['title', 'resume', 'genre'])) {
+
+        $image = null;
+
+        if (isset($_FILES['image']) && !empty($_FILES['image'])) {
+            if (!empty($film->getImage())) {
+                Uploader::delete($film->getImage());
+            }
+    
+            $image = Uploader::upload($_FILES['image']); 
+        }
+
         $film = new Film(
             $_GET['film'],
             $_POST['title'],
             $_POST['resume'],
-            $_POST['genre']
+            $_POST['genre'],
+            $image
         );
 
         $db->updateFilm($film);

@@ -6,7 +6,8 @@ class Film {
         private ?int $id,
         private string $title,
         private string $resume,
-        private string $genre
+        private string $genre,
+        private ?string $image
     )
     {}
 
@@ -22,7 +23,7 @@ class Film {
         return $this->title;
     }
 
-    function setTitle (int $title) {
+    function setTitle (string $title) {
         $this->title = $title;
     }
 
@@ -30,7 +31,7 @@ class Film {
         return $this->resume;
     }
 
-    function setResume (int $resume) {
+    function setResume (string $resume) {
         $this->resume = $resume;
     }
 
@@ -38,7 +39,15 @@ class Film {
         return $this->genre;
     }
 
-    function setGenre (int $genre) {
+    function setGenre (string $genre) {
         $this->genre = $genre;
+    }
+
+    function getImage() {
+        return $this->image;
+    }
+
+    function setImage (string $image) {
+        $this->image = $image;
     }
 }

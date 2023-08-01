@@ -12,14 +12,16 @@ class DB {
     }
 
     function saveFilm (Film $film) {
-        $query = $this->conn->prepare("INSERT INTO films (title, resume, genre) VALUES
-        (:title, :resume, :genre)");
+        $query = $this->conn->prepare("INSERT INTO films (title, resume, genre, image) VALUES
+        (:title, :resume, :genre, :image)");
         $title = $film->getTitle();
         $resume = $film->getResume();
         $genre = $film->getGenre();
+        $image = $film->getImage();
         $query->bindParam(':title', $title);
         $query->bindParam(':resume', $resume);
         $query->bindParam(':genre', $genre);
+        $query->bindParam(':image', $image);
         $query->execute();
         header('Location: /POE-PHP-avance/films/list.php');
     }
@@ -32,7 +34,7 @@ class DB {
         foreach ($results as $result) {
             array_push(
                 $films,
-                new Film($result['id'], $result['title'], $result['resume'], $result['genre'])
+                new Film($result['id'], $result['title'], $result['resume'], $result['genre'], $result['image'])
             );
         }
         return $films;
@@ -47,7 +49,8 @@ class DB {
                 $film['id'],
                 $film['title'],
                 $film['resume'],
-                $film['genre']
+                $film['genre'],
+                $film['image']
             );
         }
         else {
@@ -56,15 +59,17 @@ class DB {
     }
 
     function updateFilm (Film $film) {
-        $query = $this->conn->prepare("UPDATE films SET title = :title, resume = :resume, genre = :genre WHERE id = :id");
+        $query = $this->conn->prepare("UPDATE films SET title = :title, resume = :resume, genre = :genre, image = :image WHERE id = :id");
         $id = $film->getId();
         $title = $film->getTitle();
         $resume = $film->getResume();
         $genre = $film->getGenre();
+        $image = $film->getImage();
         $query->bindParam(':id', $id);
         $query->bindParam(':title', $title);
         $query->bindParam(':resume', $resume);
         $query->bindParam(':genre', $genre);
+        $query->bindParam(':image', $image);
         $query->execute();
         header('Location: /POE-PHP-avance/films/list.php');
     }
