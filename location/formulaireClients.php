@@ -2,6 +2,7 @@
 
 include('php/bdd.php');
 include('php/functions.php');
+include('templates/header.php');
 
 if (checkForm(['nom', 'prenom', 'codePostal', 'localite', 'rue', 'numero', 'telephone', 'email'])) {
     if (insert($conn, 'clients', [
@@ -19,3 +20,4 @@ if (checkForm(['nom', 'prenom', 'codePostal', 'localite', 'rue', 'numero', 'tele
 }
 
 include('templates/formulaireClients.html');
+include('templates/footer.html');

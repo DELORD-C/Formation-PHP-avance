@@ -2,6 +2,7 @@
 
 include('php/bdd.php');
 include('php/functions.php');
+include('templates/header.php');
 
 if (checkForm(['idClient', 'immatriculation', 'dateDebut', 'dateFin', 'dateRentree'])) {
 
@@ -25,3 +26,4 @@ if (checkForm(['idClient', 'immatriculation', 'dateDebut', 'dateFin', 'dateRentr
 }
 
 include('templates/formulaireLocations.html');
+include('templates/footer.html');

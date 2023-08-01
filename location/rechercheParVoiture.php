@@ -1,7 +1,12 @@
-<form method="POST">
-    <input type="text" name="marque" placeholder="Marque" require>
-    <input type="text" name="modele" placeholder="Modele" require>
-    <input type="submit" value="Ajouter">
+<?php include('templates/header.php'); ?>
+
+<h1 class="display-5 text-center mb-3">Rechercher des clients</h1>
+<form method="POST" class="w-50 m-auto">
+    <input class="form-control mb-3" type="text" name="marque" placeholder="Marque" require>
+    <input class="form-control mb-3" type="text" name="modele" placeholder="Modele" require>
+    <div class="d-grid gap-2">
+        <input class="btn btn-primary" type="submit" value="Ajouter">
+    </div>
 </form>
 
 <?php
@@ -43,3 +48,5 @@ if (checkForm(['marque', 'modele'])) {
         echo '<p>' . $client['nom'] . ' ' . $client['prenom'] . '</p>';
     }
 }
+
+include('templates/footer.html');

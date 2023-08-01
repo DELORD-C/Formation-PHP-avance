@@ -1,14 +1,16 @@
 <?php
 
 include('php/bdd.php');
+include('templates/header.php');
 
 $query = $conn->prepare("SELECT * FROM voitures");
 $query->execute();
 $voitures = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
+<h1 class="display-5 text-center mb-3">Liste des voitures</h1>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Immatriculation</th>
@@ -38,3 +40,5 @@ foreach ($voitures as $voiture) {
 
     </tbody>
 </table>
+
+<?php include('templates/footer.html');

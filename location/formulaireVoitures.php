@@ -2,6 +2,7 @@
 
 include('php/bdd.php');
 include('php/functions.php');
+include('templates/header.php');
 
 if (checkform(['immatriculation', 'marque', 'modele', 'cylindree', 'dateAchat'])) {
     if (insert($conn, 'voitures', [
@@ -16,3 +17,4 @@ if (checkform(['immatriculation', 'marque', 'modele', 'cylindree', 'dateAchat'])
 }
 
 include('templates/formulaireVoitures.html');
+include('templates/footer.html');
