@@ -1,6 +1,6 @@
 <form method="POST">
-    <input type="text" name="marque" placeholder="Marque" require>
-    <input type="text" name="modele" placeholder="Modele" require>
+    <input type="text" name="marque" placeholder="Marque" required>
+    <input type="text" name="modele" placeholder="Modele" required>
     <input type="submit" value="Ajouter">
 </form>
 
