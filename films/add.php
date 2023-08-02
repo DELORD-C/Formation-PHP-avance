@@ -10,7 +10,7 @@ include('templates/footer.html');
 if (Form::checkData(['title', 'resume', 'genre'])) {
     $image = null;
     
-    if (isset($_FILES['image']))
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0)
         $image = Uploader::upload($_FILES['image']); 
 
     $film = new Film(

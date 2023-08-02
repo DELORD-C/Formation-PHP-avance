@@ -67,7 +67,8 @@ class DB {
     }
 
     function updateFilm (Film $film) {
-        $query = $this->conn->prepare("UPDATE films SET title = :title, resume = :resume, genre = :genre, image = :image WHERE id = :id");
+        $imgstring = $film->getImage() != null ? ", image = :image" : "";
+        $query = $this->conn->prepare("UPDATE films SET title = :title, resume = :resume, genre = :genre" . $imgstring . " WHERE id = :id");
         $id = $film->getId();
         $title = $film->getTitle();
         $resume = $film->getResume();
@@ -77,7 +78,9 @@ class DB {
         $query->bindParam(':title', $title);
         $query->bindParam(':resume', $resume);
         $query->bindParam(':genre', $genre);
-        $query->bindParam(':image', $image);
+        if ($image != null) {
+            $query->bindParam(':image', $image);
+        }
         $query->execute();
         header('Location: /POE-PHP-avance/films/list.php');
     }

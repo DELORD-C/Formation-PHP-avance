@@ -11,7 +11,7 @@ if (Form::checkFilm() && $film = $db->getFilm($_GET['film'])) {
 
         $image = null;
 
-        if (isset($_FILES['image']) && !empty($_FILES['image'])) {
+        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
             if (!empty($film->getImage())) {
                 Uploader::delete($film->getImage());
             }
