@@ -38,4 +38,35 @@ class Parser {
             ],
             $template);
     }
+
+    static function apiList (array $films) {
+        $template = file_get_contents('templates/list_api.html');
+
+        $html = "";
+        foreach ($films as $film) {
+            if (empty($film->genre_ids)) {
+                $genre = 'Non définit';
+            }
+            else {
+                $genre = Api::genre($film->genre_ids[0]);
+            }
+            $html .= '
+            <tr>
+                <td><img style="max-width: 50px;" src="https://image.tmdb.org/t/p/w500' . $film->poster_path . '"></td>
+                <td>' . $film->title . "</td>
+                <td>" . $film->overview . "</td>
+                <td>" . $genre . "</td>
+                <td>
+                    <form action='add.php' method='POST'>
+                        <input type='hidden' name='title' value='" . $film->title . "'>
+                        <input type='hidden' name='resume' value='" . $film->overview . "'>
+                        <input type='hidden' name='genre' value='" . $genre . "'>
+                        <input class='btn btn-primary' type='submit' value='+'>
+                    </form>
+                </td>
+            </tr>
+            ";
+        }
+        return str_replace('{{ FILMS }}', $html, $template);
+    }
 }
