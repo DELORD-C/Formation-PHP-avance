@@ -9,7 +9,7 @@ class Parser {
             $html .= "
             <tr>
                 <td>" . $film->getId() . '</td>
-                <td><img style="max-width: 50px;" src="uploads/' . $film->getImage() . '"></td>
+                <td><img style="max-width: 50px;" src="' . $film->getImage() . '"></td>
                 <td>' . $film->getTitle() . "</td>
                 <td>" . $film->getResume() . "</td>
                 <td>" . $film->getGenre() . "</td>

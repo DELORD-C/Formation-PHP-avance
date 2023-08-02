@@ -32,6 +32,14 @@ class DB {
         $results = $query->fetchAll(PDO::FETCH_ASSOC);
         $films = [];
         foreach ($results as $result) {
+
+            if (empty($result['image'])) {
+                $result['image'] = Api::getImage($result['title']);
+            }
+            else {
+                $result['image'] = 'uploads/' . $result['image'];
+            }
+
             array_push(
                 $films,
                 new Film($result['id'], $result['title'], $result['resume'], $result['genre'], $result['image'])
