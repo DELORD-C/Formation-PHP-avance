@@ -1,6 +1,6 @@
 <?php
 
-class Personnage {
+abstract class Personnage {
 
     function __construct (
         protected string $name,
