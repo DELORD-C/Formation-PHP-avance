@@ -15,7 +15,7 @@ class Input extends AbstractChamp {
         $label = isset($this->options['label']) ? $this->options['label'] : $this->name;
         $value = isset($this->options['value']) ? "value='" . $this->options['value'] . "'" : "";
         $html = "<p>
-            <label for='" . $this->name . "'>$label</label>
+            <label class='form-control' for='" . $this->name . "'>$label</label>
             <input type='" . $this->type . "' name='" . $this->name . "' id='" . $this->name . "'" . $value;
             
         foreach ($this->options as $attr => $attrValue) {
