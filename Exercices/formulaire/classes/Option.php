@@ -1,13 +1,14 @@
 <?php
 
-class Option {
+class Option implements Html {
     function __construct (
-        private $value,
-        private $label,
-        private $selected = ""
+        private string $value,
+        private string $label,
+        private string $selected = ""
     ) {}
 
-    function html () {
+    function html ():string
+    {
         return "<option " . $this->selected . " value='" . $this->value . "'>" . $this->label . "</option>";
     }
 }

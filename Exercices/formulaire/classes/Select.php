@@ -1,13 +1,15 @@
 <?php
 
-class Select {
+class Select extends AbstractChamp {
     function __construct (
-        private $name,
-        private $listeOptions = [],
-        private $options = []
-    ) {}
+        private string $name,
+        private array $listeOptions = [],
+        private array $options = []
+    ) {
+    }
 
-    function html () {
+    function html ():string
+    {
         $label = isset($this->options['label']) ? $this->options['label'] : $this->name;
         $html = "<p>
             <label for='" . $this->name . "'>$label</label>
