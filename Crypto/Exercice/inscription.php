@@ -15,7 +15,7 @@ if (Form::checkData(['nom', 'prenom', 'email', 'password', 'password-confirm']))
             'nom' => $_POST['nom'],
             'prenom' => $_POST['prenom'],
             'email' => $_POST['email'],
-            'password' => $_POST['password']
+            'password' => Hasher::hash($_POST['password'])
         ]);
     }
 }

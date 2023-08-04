@@ -2,4 +2,5 @@
 
 require('classes/Autoloader.php');
 $app = new App();
-$app->addContent('Accueil');
+$auth = new Auth();
+$auth->disconnect();

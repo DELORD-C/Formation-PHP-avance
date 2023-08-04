@@ -39,10 +39,9 @@ class DB {
         return false;
     }
 
-    function getUser (string $email, string $password) {
-        $query = $this->conn->prepare('SELECT * FROM users WHERE email = :email AND password = :password');
+    function getUser (string $email) {
+        $query = $this->conn->prepare('SELECT * FROM users WHERE email = :email');
         $query->bindParam(':email', $email);
-        $query->bindParam(':password', $password);
         $query->execute();
         $result = $query->fetch(PDO::FETCH_ASSOC);
         if ($result) {

@@ -13,6 +13,7 @@ class Auth {
 
     function disconnect () {
         session_destroy();
+        header('location: login.php');
     }
 
     function check () {
